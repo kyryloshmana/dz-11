@@ -3,46 +3,36 @@ import family.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import tests.Data;
 
-import static org.testng.Assert.*;
+import static org.testng.AssertJUnit.*;
 import java.util.HashMap;
 
 public class ManManagerTest {
-    Data menFirst;
-    Data menSecond;
-    Data womanFirst;
-    Data womanSecond;
 
     private MenManager menManager;
     private Men men;
+    private Men menAnother;
+
 
     @BeforeMethod
     public void setUp(){
-        menFirst = Data.MAN1;
-        menSecond = Data.MAN2;
-        womanFirst = Data.WOMAN1;
-        womanSecond = Data.WOMAN2;
 
         menManager = new MenManager();
         UniqueId uniqueId = new UniqueId();
-        men = new Men(uniqueId, menFirst.getFirstName(),menFirst.getLastName(),menFirst.getAge());
+        men = new Men(uniqueId, "Johnny","Deep",55);
+        menAnother = new Men(uniqueId, "Brad","Pitt",66);
         menManager.addMan(men);
         }
 
-    @Test(description = "Створення чоловіка")
+
+    @Test(description = "Перевірка створеного чоловіка")
     public void addManTest(){
         HashMap<Integer, Men> man = menManager.getMens();
-        Assert.assertEquals(menFirst.getFirstName(), man.get(men.getId()).getFirstName());
-        Assert.assertEquals(menFirst.getLastName(), man.get(men.getId()).getLastName());
-        Assert.assertEquals(menFirst.getAge(), man.get(men.getId()).getAge());
-    }
-    @Test(description = "Отримання чоловіка")
-    public void getManTest(){
-        addManTest();
-        Assert.assertEquals(men,menManager.getMan(men.getId()));
+        assertEquals(men, man.get(men.getId()));
 
     }
+
+
     @Test(description = "Видалення чоловіка")
     public void removeManTest(){
         addManTest();
@@ -53,4 +43,10 @@ public class ManManagerTest {
         assertEquals(0, mens.size());
     }
 
+    @Test(description = "Перевірка пенсійного року у чоловіків")
+    public void getIsRedirectMan(){
+        assertFalse(men.isRetired(men.getAge()));
+        men.setAge(menAnother.getAge());
+        assertTrue(men.isRetired(men.getAge()));
+    }
 }

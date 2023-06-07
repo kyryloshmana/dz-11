@@ -12,16 +12,12 @@ public class WomanManager {
         womanManagerMapAfterMerited = new HashMap<>();
         womenLastNameManagerMap = new HashMap<>();
     }
-
     public HashMap<Integer, Woman> getWomen(){
         return womanManagerMap;
     }
-
     public void addWoman(Woman woman){
         womanManagerMap.put(woman.getId(), woman);
     }
-
-
     public Woman getWoman(int id){
         return womanManagerMap.get(id);
     }
@@ -32,15 +28,12 @@ public class WomanManager {
     public HashMap<Integer, Woman> getMeritedWomen(){
         return womanManagerMapAfterMerited;
     }
-
     public Woman getMeritedWoman(int id){
         return womanManagerMapAfterMerited.get(id);
     }
-
     public void addWomanToMeritedMap(Woman woman){
         womanManagerMapAfterMerited.put(woman.getId(), woman);
     }
-
     public Woman removeWomanFromMeritedMap(int id){
         return womanManagerMapAfterMerited.remove(id);
     }

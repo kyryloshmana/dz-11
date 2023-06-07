@@ -6,8 +6,5 @@
             <class name = "tests.WomanManagerTest"/>
             <class name = "tests.RegisterManagerTest"/>
         </classes>
-
     </test>
-
-
 </suite>
