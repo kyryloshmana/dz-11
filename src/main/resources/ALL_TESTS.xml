@@ -1,0 +1,10 @@
+<suite name = "Use test automation">
+    <test name ="The all project tests">
+        <classes>
+            <class name = "tests.CreatePersonsTest"/>
+            <class name = "tests.ManManagerTest"/>
+            <class name = "tests.WomanManagerTest"/>
+            <class name = "tests.RegisterManagerTest"/>
+        </classes>
+    </test>
+</suite>
