@@ -11,21 +11,21 @@ public class CreatePersonsTest {
     private Person personAnother;
     UniqueId uniqueId;
 
-    @BeforeMethod
+    @BeforeMethod (groups = {"gets_sets"})
     public void setUp() {
         uniqueId = new UniqueId();
         person = new Men(uniqueId, "Johnny", "Depp", 55);
         personAnother = new Woman(uniqueId, "Margot", "Robby", 77);
        }
 
-    @Test (description = "Перевірка отриманих даних створеного особи")
+    @Test (description = "Перевірка отриманих даних створеного особи", groups = {"gets_sets"})
     public void getPersonData(){
         assertEquals("Johnny", person.getFirstName());
         assertEquals("Depp", person.getLastName());
         assertEquals(55, person.getAge());
         }
 
-    @Test (description = "Перевірка перезапису даних особи")
+    @Test (description = "Перевірка перезапису даних особи", groups = {"gets_sets"} )
     public void setPersonData(){
         person.setFirstName(personAnother.getFirstName());
         person.setLastName(personAnother.getLastName());
